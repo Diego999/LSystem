@@ -1,0 +1,7 @@
+/Basic Version/2D/debug
+/Basic Version/2D/release
+
+/Basic Version/2D/*.user
+/Basic Version/2D/Makefile.Release
+/Basic Version/2D/Makefile
+/Basic Version/2D/Makefile.Debug
