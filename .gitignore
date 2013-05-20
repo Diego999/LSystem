@@ -5,3 +5,14 @@
 /Basic Version/2D/Makefile.Release
 /Basic Version/2D/Makefile
 /Basic Version/2D/Makefile.Debug
+
+/New/LSystem/*.user
+
+/New/LSystem/debug
+/New/LSystem/release
+
+/New/LSystem/Makefile
+/New/LSystem/Makefile.Debug
+/New/LSystem/Makefile.Release
+/New/LSystem/object_script.LSystem.Debug
+/New/LSystem/object_script.LSystem.Release
