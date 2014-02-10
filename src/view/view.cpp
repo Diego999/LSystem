@@ -4,7 +4,7 @@
 #include <GL/glu.h>
 #include <QDebug>
 
-View::View(const QString& filePath, QWidget *parent) : GLWidget(60 , parent, "LSystem"), starter(starter), deep(deep), sequenceParser(filePath)
+View::View(const QString& filePath, QWidget *parent) : GLWidget(60 , parent, "LSystem"), sequenceParser(filePath)
 {
     QVector3D startPosition(0,0,0);
     QVector3D startDirection(0,1,0);

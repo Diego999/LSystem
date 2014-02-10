@@ -24,8 +24,6 @@ public:
 private:
     void drawLine(const qreal r = 1.0, const qreal g = 1.0, const qreal b = 1.0) const;
 
-    QString starter;
-    int deep;
     Turtle* turtle;
     SequenceParser sequenceParser;
 };
