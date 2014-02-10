@@ -24,11 +24,6 @@ void State::setPosition(const QVector3D& newPosition)
     position = newPosition;
 }
 
-void State::setDirection(const QMatrix4x4& transformMatrix)
-{
-    direction = transformMatrix*direction;
-}
-
 void State::setDirection(const QVector3D& newDirection)
 {
     direction = newDirection;

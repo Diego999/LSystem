@@ -25,4 +25,6 @@ RESOURCES +=
 
 OTHER_FILES += \
     res/Plant.xml \
-    res/SierpinskiTriangle.xml
+    res/SierpinskiTriangle.xml \
+    res/CombinationIslandsLakes.xml \
+    res/Hilbert2D.xml

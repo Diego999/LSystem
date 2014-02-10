@@ -4,8 +4,8 @@
         <name>Hilbert2D</name>
         <angle>90</angle>
         <axiom>A</axiom>
-        <deep>4</deep>
-        <step-length>0.5</step-length>
+        <deep>2</deep>
+        <step-length>1</step-length>
     </description>
 	<forwards>
 		<forward>F</forward>

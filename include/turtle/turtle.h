@@ -4,43 +4,43 @@
 #include "state.h"
 #include "include/config.h"
 
-#include <QMatrix4x4>
 #include <QStack>
 
 class Turtle
 {
 public:
-    Turtle(const QVector3D& startPosition, const QVector3D& startDirection, const qreal stepLength, const qreal stepAngle);
-    virtual ~Turtle();
+    Turtle(const qreal stepLength, const qreal stepAngle);
 
-    QVector3D forward();
-    void beginTranform();
-    void endTransform();
     void reinitialize();
 
-    QVector3D getOldPosition() const;
-    QVector3D getPosition() const;
-    QVector3D getDirection() const;
-
-    void yawLeft();
-    void yawRight();
-    void yawAround();
+    void turnLeft();
+    void turnRight();
     void pitchDown();
     void pitchUp();
     void rollLeft();
     void rollRight();
+    void turnAround();
 
     void statePush();
     void statePop();
 
-protected:
-    virtual void yaw(const qreal angle);
-    virtual void pitch(const qreal angle);
-    virtual void roll(const qreal angle);
+    void forward();
 
-    void rotate(const qreal angle, const QVector3D& vec);
+    QVector3D getOldPosition() const {return oldPosition;}
+    QVector3D getPosition() const {return position;}
 
-    QMatrix4x4 transformMatrix;
+private:
+    void turn(const qreal angle);
+    void pitch(const qreal angle);
+    void roll(const qreal angle);
+
+    QVector3D vecH;
+    QVector3D vecL;
+    QVector3D vecU;
+
+    QVector3D oldPosition;
+    QVector3D position;
+
     QStack<State> stack;
     State state;
     qreal stepLength;

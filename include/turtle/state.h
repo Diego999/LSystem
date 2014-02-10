@@ -14,7 +14,6 @@ public:
 
     void setPosition(const QVector3D& newPosition);
     void setDirection(const QVector3D& newDirection);
-    void setDirection(const QMatrix4x4& transformMatrix);
 
     QVector3D getOldPosition() const;
     QVector3D getPosition() const;

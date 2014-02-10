@@ -4,16 +4,10 @@
 #include <GL/glu.h>
 #include <QDebug>
 
-View::View(const QString& filePath, QWidget *parent) : GLWidget(60 , parent, "LSystem"), starter(starter), deep(deep), sequenceParser(filePath)
+View::View(const QString& filePath, QWidget *parent) : GLWidget(60 , parent, "LSystem"),
+    sequenceParser(filePath), turtle(sequenceParser.getStepLength(), sequenceParser.getAngle())
 {
-    QVector3D startPosition(0,0,0);
-    QVector3D startDirection(0,1,0);
-    turtle = new Turtle(startPosition, startDirection, sequenceParser.getStepLength(), sequenceParser.getAngle());
-}
 
-View::~View()
-{
-    delete turtle;
 }
 
 void View::initializeGL()
@@ -31,7 +25,7 @@ void View::paintGL()
     GLWidget::paintGL();
     glLineWidth(5);
 
-    turtle->reinitialize();
+    turtle.reinitialize();
 
     QString sequence = sequenceParser.substitute(sequenceParser.getAxiom(), sequenceParser.getDeep());
     QStringList forwards = sequenceParser.getForwards();
@@ -40,50 +34,50 @@ void View::paintGL()
     {
         if(forwards.contains(static_cast<QString>(it->toAscii())))
         {
-            turtle->endTransform();
-            turtle->forward();
+            turtle.forward();
             drawLine(1,1,1);
         }
         else
             switch(it->toAscii())
             {
             case '+':
-                turtle->yawLeft();
+                turtle.turnLeft();
                 break;
             case '-':
-                turtle->yawRight();
+                turtle.turnRight();
                 break;
-            case '&':
-                turtle->pitchDown();
+            case '%':
+                turtle.pitchDown();
                 break;
             case '^':
-                turtle->pitchUp();
+                turtle.pitchUp();
                 break;
             case '\\':
-                turtle->rollLeft();
+                turtle.rollLeft();
                 break;
             case '/':
-                turtle->rollRight();
+                turtle.rollRight();
                 break;
             case '|':
-                turtle->yawAround();
+                turtle.turnAround();
                 break;
             case '[':
-                turtle->statePush();
+                //turtle.statePush();
                 break;
             case ']':
-                turtle->statePop();
+                //turtle.statePop();
                 break;
             default:
                 break;
             }
     }
+
 }
 
 void View::drawLine(const qreal r, const qreal g, const qreal b) const
 {
-    QVector3D v1 = turtle->getOldPosition();
-    QVector3D v2 = turtle->getPosition();
+    QVector3D v1 = turtle.getOldPosition();
+    QVector3D v2 = turtle.getPosition();
 
     glBegin(GL_LINES);
         glColor3f(r,g,b);
