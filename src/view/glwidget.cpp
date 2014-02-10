@@ -2,7 +2,8 @@
 
 #include <QTimer>
 #include <QKeyEvent>
-#include <GL/glut.h>
+#include <GL/gl.h>
+#include <GL/glu.h>
 #include <QDebug>
 #include <cmath>
 #include <QMessageBox>

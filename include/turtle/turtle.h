@@ -34,9 +34,9 @@ public:
     void statePop();
 
 protected:
-    virtual void yaw(const qreal angle) = 0;
-    virtual void pitch(const qreal angle) = 0;
-    virtual void roll(const qreal angle) = 0;
+    virtual void yaw(const qreal angle);
+    virtual void pitch(const qreal angle);
+    virtual void roll(const qreal angle);
 
     void rotate(const qreal angle, const QVector3D& vec);
 

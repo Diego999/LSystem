@@ -1,7 +1,6 @@
 #include "include/view/view.h"
-#include "include/turtle/turtle2D.h"
-#include "include/turtle/turtle3D.h"
-
+#include "include/turtle/turtle.h"
+#include <GL/gl.h>
 #include <GL/glu.h>
 #include <QDebug>
 
@@ -9,10 +8,7 @@ View::View(const QString& starter, const int deep, bool is3D, QWidget *parent) :
 {
     QVector3D startPosition(0,0,0);
     QVector3D startDirection(0,1,0);
-    if(is3D)
-        turtle = new Turtle3D(startPosition, startDirection);
-    else
-        turtle = new Turtle2D(startPosition, startDirection);
+    turtle = new Turtle(startPosition, startDirection);
 }
 
 View::~View()
@@ -39,29 +35,14 @@ void View::paintGL()
 
     QString sequence = sequenceParser.substitute(starter, deep);
 
-    qreal r = 150.0/255.0;
-    qreal g = 90.0/255.0;
-    qreal b = 45.0/255.0;
-
     for(QString::const_iterator it = sequence.constBegin(); it != sequence.constEnd(); ++it)
     {
         switch(it->toAscii())
         {
-        case 'M':
-            r = 0;
-            g = 1;
-            b = 0;
+        case 'F':
             turtle->endTransform();
             turtle->forward();
-            drawLine(r,g,b);
-            break;
-        case 'S':
-            r = 150.0/255.0;
-            g = 90.0/255.0;
-            b = 45.0/255.0;
-            turtle->endTransform();
-            turtle->forward();
-            drawLine(r,g,b);
+            drawLine(1,1,1);
             break;
         case '+':
             turtle->yawLeft();

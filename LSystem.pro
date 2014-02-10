@@ -12,8 +12,6 @@ QT += opengl
 # Input
 HEADERS += include/turtle/state.h \
            include/turtle/turtle.h \
-           include/turtle/turtle2d.h \
-           include/turtle/turtle3d.h \
            include/view/glwidget.h \
            include/view/view.h \
     include/parser/sequenceparser.h \
@@ -21,8 +19,6 @@ HEADERS += include/turtle/state.h \
 SOURCES += main.cpp \
            src/turtle/state.cpp \
            src/turtle/turtle.cpp \
-           src/turtle/turtle2d.cpp \
-           src/turtle/turtle3d.cpp \
            src/view/glwidget.cpp \
            src/view/view.cpp \
     src/parser/sequenceparser.cpp
