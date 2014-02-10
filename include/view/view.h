@@ -14,7 +14,7 @@ class View : public GLWidget
     Q_OBJECT
 
 public:
-    View(const QString& starter, const int deep = 1, bool is3D = true, QWidget *parent = 0);
+    View(const QString& filePath, QWidget *parent = 0);
     ~View();
 
     void initializeGL();

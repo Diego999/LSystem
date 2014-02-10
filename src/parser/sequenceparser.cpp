@@ -5,8 +5,16 @@
 #include <QTextStream>
 #include <QApplication>
 #include <QDebug>
+#include <iostream>
+const QString SequenceParser::NAME_KEY = "name";
+const QString SequenceParser::ANGLE_KEY = "angle";
+const QString SequenceParser::AXIOM_KEY = "axiom";
+const QString SequenceParser::DEEP_KEY = "deep";
+const QString SequenceParser::STEP_LENGTH = "step-length";
+const QString SequenceParser::RULE_LEFT_KEY = "left";
+const QString SequenceParser::RULE_RIGHT_KEY = "right";
 
-SequenceParser::SequenceParser(const QString& filepath):filePath(filepath)
+SequenceParser::SequenceParser(const QString& filepath):filePath(filepath),name(""),angle(0),stepLength(0),axiom(""),deep(0)
 {
     getRules();
 }
@@ -15,7 +23,7 @@ void SequenceParser::getRules()
 {
     if(!QFile::exists(filePath))
     {
-        QMessageBox::critical(0,QApplication::tr("CRITICAL ERROR"),QApplication::tr("The file doesn't exist !"));
+        std::cerr << "File doesn't exist !" << std::endl;
         exit(EXIT_FAILURE);
     }
 
@@ -23,23 +31,41 @@ void SequenceParser::getRules()
 
     if(!file.open(QIODevice::ReadOnly | QIODevice::Text))
     {
-        QMessageBox::critical(0,QApplication::tr("CRITICAL ERROR"),QApplication::tr("The file cannot be reader !"));
+        std::cerr << "The file cannot be read !" << std::endl;
         file.close();
         exit(EXIT_FAILURE);
     }
+    QXmlStreamReader reader(&file);
 
-    QTextStream stream(&file);
-    while(!stream.atEnd())
+    QString lastEntry = "";
+
+    while(!reader.atEnd() && !reader.hasError())
     {
-        QString line = stream.readLine().trimmed();
-
-        if(line.length() > 0)
+        reader.readNext();
+        if(reader.isStartElement())
         {
-            QStringList sl = line.split("->", QString::SkipEmptyParts);
-            if(sl.length() > 1)
-                rules[*sl[0].trimmed().data()] = sl[1].trimmed();
+            QString _name = reader.name().toString();
+            if(_name == NAME_KEY)
+                name = reader.readElementText();
+            else if(_name == DEEP_KEY)
+                deep = reader.readElementText().toInt();
+            else if(_name == ANGLE_KEY)
+                angle = reader.readElementText().toDouble();
+            else if(_name == STEP_LENGTH)
+                stepLength = reader.readElementText().toDouble();
+            else if(_name == AXIOM_KEY)
+                axiom = reader.readElementText();
+            else if(_name == RULE_LEFT_KEY)
+            {
+                lastEntry = reader.readElementText().trimmed();
+                rules[*lastEntry.data()] = "";
+            }
+            else if(_name == RULE_RIGHT_KEY)
+                rules[*lastEntry.data()] = reader.readElementText().trimmed();
         }
     }
+
+    reader.clear();
     file.close();
 }
 

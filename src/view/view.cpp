@@ -4,11 +4,11 @@
 #include <GL/glu.h>
 #include <QDebug>
 
-View::View(const QString& starter, const int deep, bool is3D, QWidget *parent) : GLWidget(60 , parent, "LSystem"), starter(starter), deep(deep), sequenceParser(":/rules")
+View::View(const QString& filePath, QWidget *parent) : GLWidget(60 , parent, "LSystem"), starter(starter), deep(deep), sequenceParser(filePath)
 {
     QVector3D startPosition(0,0,0);
     QVector3D startDirection(0,1,0);
-    turtle = new Turtle(startPosition, startDirection);
+    turtle = new Turtle(startPosition, startDirection, sequenceParser.getStepLength(), sequenceParser.getAngle());
 }
 
 View::~View()
@@ -33,13 +33,14 @@ void View::paintGL()
 
     turtle->reinitialize();
 
-    QString sequence = sequenceParser.substitute(starter, deep);
+    QString sequence = sequenceParser.substitute(sequenceParser.getAxiom(), sequenceParser.getDeep());
 
     for(QString::const_iterator it = sequence.constBegin(); it != sequence.constEnd(); ++it)
     {
         switch(it->toAscii())
         {
-        case 'F':
+        case 'A':
+        case 'B':
             turtle->endTransform();
             turtle->forward();
             drawLine(1,1,1);

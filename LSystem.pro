@@ -14,15 +14,14 @@ HEADERS += include/turtle/state.h \
            include/turtle/turtle.h \
            include/view/glwidget.h \
            include/view/view.h \
-    include/parser/sequenceparser.h \
-    include/config.h
+    include/parser/sequenceparser.h
 SOURCES += main.cpp \
            src/turtle/state.cpp \
            src/turtle/turtle.cpp \
            src/view/glwidget.cpp \
            src/view/view.cpp \
     src/parser/sequenceparser.cpp
-RESOURCES += ressources.qrc
+RESOURCES +=
 
 OTHER_FILES += \
-    res/rules.txt
+    res/rules.xml

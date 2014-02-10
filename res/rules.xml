@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lsystem>
+    <description>
+        <name>Sierpinski Triangle</name>
+        <angle>60</angle>
+        <axiom>A</axiom>
+        <deep>4</deep>
+        <step-length>0.5</step-length>
+    </description>
+    <rules>
+        <rule>
+            <left>A</left>
+            <right>B-A-B</right>
+        </rule>
+        <rule>
+            <left>B</left>
+            <right>A+B+A</right>
+           </rule>
+    </rules>
+</lsystem>

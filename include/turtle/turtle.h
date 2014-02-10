@@ -10,7 +10,7 @@
 class Turtle
 {
 public:
-    Turtle(const QVector3D& startPosition, const QVector3D& startDirection, const qreal stepLength = DEFAULT_STEP, const qreal stepAngle = DEFAULT_ANGLE);
+    Turtle(const QVector3D& startPosition, const QVector3D& startDirection, const qreal stepLength, const qreal stepAngle);
     virtual ~Turtle();
 
     QVector3D forward();

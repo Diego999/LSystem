@@ -1,6 +1,7 @@
 #include "include/turtle/turtle.h"
 
-Turtle::Turtle(const QVector3D& startPosition, const QVector3D &startDirection, const qreal stepLength, const qreal stepAngle):state(startPosition, startDirection), stepLength(stepLength),stepAngle(stepAngle)
+Turtle::Turtle(const QVector3D& startPosition, const QVector3D &startDirection, const qreal _stepLength, const qreal _stepAngle):
+    state(startPosition, startDirection), stepLength(_stepLength),stepAngle(_stepAngle)
 {
     reinitialize();
 }
