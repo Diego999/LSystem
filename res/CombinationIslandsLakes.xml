@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lsystem>
+    <description>
+        <name>Combination of islands and lakes</name>
+        <angle>90</angle>
+        <axiom>F+F+F+F</axiom>
+        <deep>2</deep>
+        <step-length>0.5</step-length>
+    </description>
+	<forwards>
+		<forward>F</forward>
+		<forward>f</forward>
+	</forwards>
+    <rules>
+        <rule>
+            <left>F</left>
+            <right>F+f-FF+F+FF+Ff+FF-f+FF-F-FF-Ff-FFF</right>
+        </rule>
+        <rule>
+            <left>f</left>
+            <right>ffffff</right>
+           </rule>
+    </rules>
+</lsystem>

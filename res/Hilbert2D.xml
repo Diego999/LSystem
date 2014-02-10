@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lsystem>
+    <description>
+        <name>Hilbert2D</name>
+        <angle>90</angle>
+        <axiom>A</axiom>
+        <deep>4</deep>
+        <step-length>0.5</step-length>
+    </description>
+	<forwards>
+		<forward>F</forward>
+	</forwards>
+    <rules>
+        <rule>
+            <left>A</left>
+            <right>- B F + A F A + F B -</right>
+        </rule>
+        <rule>
+            <left>B</left>
+            <right>+ A F - B F B - F A +</right>
+           </rule>
+    </rules>
+</lsystem>

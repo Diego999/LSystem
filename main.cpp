@@ -9,7 +9,7 @@ int main(int argc,char* argv[])
 {
     QApplication app(argc,argv);
 
-    View v("../../res/SierpinskiTriangle.xml");
+    View v("../../res/Hilbert2D.xml");
     v.show();
     return app.exec();
 }
