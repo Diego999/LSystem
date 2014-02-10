@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lsystem>
+    <description>
+        <name>Plant</name>
+        <angle>25</angle>
+        <axiom>X</axiom>
+        <deep>4</deep>
+        <step-length>0.5</step-length>
+    </description>
+	<forwards>
+		<forward>F</forward>
+	</forwards>
+    <rules>
+        <rule>
+            <left>X</left>
+            <right> F-[[X]+X]+F[+FX]-X</right>
+        </rule>
+        <rule>
+            <left>F</left>
+            <right>FF</right>
+           </rule>
+    </rules>
+</lsystem>

@@ -34,47 +34,49 @@ void View::paintGL()
     turtle->reinitialize();
 
     QString sequence = sequenceParser.substitute(sequenceParser.getAxiom(), sequenceParser.getDeep());
+    QStringList forwards = sequenceParser.getForwards();
 
     for(QString::const_iterator it = sequence.constBegin(); it != sequence.constEnd(); ++it)
     {
-        switch(it->toAscii())
+        if(forwards.contains(static_cast<QString>(it->toAscii())))
         {
-        case 'A':
-        case 'B':
             turtle->endTransform();
             turtle->forward();
             drawLine(1,1,1);
-            break;
-        case '+':
-            turtle->yawLeft();
-            break;
-        case '-':
-            turtle->yawRight();
-            break;
-        case '&':
-            turtle->pitchDown();
-            break;
-        case '^':
-            turtle->pitchUp();
-            break;
-        case '\\':
-            turtle->rollLeft();
-            break;
-        case '/':
-            turtle->rollRight();
-            break;
-        case '|':
-            turtle->yawAround();
-            break;
-        case '[':
-            turtle->statePush();
-            break;
-        case ']':
-            turtle->statePop();
-            break;
-        default:
-            break;
         }
+        else
+            switch(it->toAscii())
+            {
+            case '+':
+                turtle->yawLeft();
+                break;
+            case '-':
+                turtle->yawRight();
+                break;
+            case '&':
+                turtle->pitchDown();
+                break;
+            case '^':
+                turtle->pitchUp();
+                break;
+            case '\\':
+                turtle->rollLeft();
+                break;
+            case '/':
+                turtle->rollRight();
+                break;
+            case '|':
+                turtle->yawAround();
+                break;
+            case '[':
+                turtle->statePush();
+                break;
+            case ']':
+                turtle->statePop();
+                break;
+            default:
+                break;
+            }
     }
 }
 

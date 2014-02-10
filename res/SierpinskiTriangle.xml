@@ -7,6 +7,10 @@
         <deep>4</deep>
         <step-length>0.5</step-length>
     </description>
+	<forwards>
+		<forward>A</forward>
+		<forward>B</forward>
+	</forwards>
     <rules>
         <rule>
             <left>A</left>

@@ -4,6 +4,7 @@
 #include <QHash>
 #include <QString>
 #include <QXmlStreamReader>
+#include <QStringList>
 
 class SequenceParser
 {
@@ -17,6 +18,7 @@ public:
     qreal getStepLength() const {return stepLength;}
     qreal getAngle() const {return angle;}
     int getDeep() const {return deep;}
+    QStringList getForwards() const {return forwards;}
 
 private:
     static const QString NAME_KEY;
@@ -26,8 +28,10 @@ private:
     static const QString STEP_LENGTH;
     static const QString RULE_LEFT_KEY;
     static const QString RULE_RIGHT_KEY;
+    static const QString FORWARD_KEY;
 
     QHash<QChar, QString> rules;
+    QStringList forwards;
     QString filePath;
     QString name;
     qreal angle;

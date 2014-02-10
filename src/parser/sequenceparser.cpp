@@ -13,6 +13,7 @@ const QString SequenceParser::DEEP_KEY = "deep";
 const QString SequenceParser::STEP_LENGTH = "step-length";
 const QString SequenceParser::RULE_LEFT_KEY = "left";
 const QString SequenceParser::RULE_RIGHT_KEY = "right";
+const QString SequenceParser::FORWARD_KEY = "forward";
 
 SequenceParser::SequenceParser(const QString& filepath):filePath(filepath),name(""),angle(0),stepLength(0),axiom(""),deep(0)
 {
@@ -62,6 +63,8 @@ void SequenceParser::getRules()
             }
             else if(_name == RULE_RIGHT_KEY)
                 rules[*lastEntry.data()] = reader.readElementText().trimmed();
+            else if(_name == FORWARD_KEY)
+                forwards << reader.readElementText();
         }
     }
 

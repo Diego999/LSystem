@@ -24,4 +24,5 @@ SOURCES += main.cpp \
 RESOURCES +=
 
 OTHER_FILES += \
-    res/rules.xml
+    res/Plant.xml \
+    res/SierpinskiTriangle.xml
