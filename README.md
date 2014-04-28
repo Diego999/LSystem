@@ -17,3 +17,8 @@ The grammar to use is as follow :
     ] -> state pop```
 
 The XML structure is quite trivial and doesn't need some explanations.
+
+
+## License
+
+This code is distributed under the terms and conditions of the [MIT license](LICENSE).
